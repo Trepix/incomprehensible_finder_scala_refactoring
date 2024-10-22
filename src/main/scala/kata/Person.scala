@@ -20,3 +20,12 @@ class Person {
     this.birthDate = birthDate
   }
 }
+
+object Person {
+  def create(name: String, birthDate: Date) = {
+    val p = Person()
+    p.name = name
+    p.birthDate = birthDate
+    p
+  }
+}

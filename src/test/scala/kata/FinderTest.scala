@@ -10,10 +10,10 @@ import java.util.{Calendar, GregorianCalendar}
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
-  var sue: Person = new Person()
-  var greg: Person = new Person()
-  var sarah: Person = new Person()
-  var mike: Person = new Person()
+  var sue: Person = Person.create("Sue", date(50, JANUARY, 1))
+  var greg: Person = Person.create("Greg", date(52, JUNE, 1))
+  var sarah: Person =Person.create("Sarah", date(82, JANUARY, 1))
+  var mike: Person = Person.create("Mike", date(79, JANUARY, 1))
 
   override def beforeEach(): Unit = {
     sue.name = "Sue"
