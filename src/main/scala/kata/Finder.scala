@@ -1,6 +1,6 @@
 package kata
 
-import kata.Criteria.Criteria
+import kata.Criteria
 
 import java.util
 import java.util.ArrayList

@@ -1,10 +1,11 @@
 package kata
 
+sealed trait Criteria
+
 object Criteria {
-
-  sealed trait Criteria
-
   case object Closest extends Criteria
 
   case object Furthest extends Criteria
 }
+
+
