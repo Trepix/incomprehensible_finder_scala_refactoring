@@ -10,15 +10,8 @@ class Person {
 
   def getName(): String = name
 
-  def setName(name: String): Unit = {
-    this.name = name
-  }
-
   def getBirthDate(): Date = birthDate
 
-  def setBirthDate(birthDate: Date): Unit = {
-    this.birthDate = birthDate
-  }
 }
 
 object Person {
