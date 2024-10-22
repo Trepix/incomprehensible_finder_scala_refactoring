@@ -14,10 +14,6 @@ import scala.collection.JavaConverters._
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
-  def createFinder(list: List[Person]) = {
-    Finder(list)
-  }
-
   val sue: Person = Person("Sue", date(50, JANUARY, 1))
   val greg: Person = Person("Greg", date(52, JUNE, 1))
   val sarah: Person =Person("Sarah", date(82, JANUARY, 1))
@@ -31,9 +27,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return empty results when given empty list" in {
       val list = List.empty[Person]
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Closest)
+      val result = finder.find(Criteria.Closest)
 
       result shouldBe None
     }
@@ -41,9 +37,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return empty results when given one person" in {
       val list = List(sue)
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Closest)
+      val result = finder.find(Criteria.Closest)
 
       result shouldBe None
     }
@@ -51,9 +47,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return closest two for two people" in {
       val list = List(sue, greg)
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Closest).get
+      val result = finder.find(Criteria.Closest).get
 
       result.P1 shouldBe sue
       result.P2 shouldBe greg
@@ -62,9 +58,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return furthest two for two people" in {
       val list = List(mike ,greg)
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Furthest).get
+      val result = finder.find(Criteria.Furthest).get
 
       result.P1 shouldBe greg
       result.P2 shouldBe mike
@@ -73,9 +69,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return furthest two for four people" in {
       val list = List(sue, sarah, mike ,greg)
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Furthest).get
+      val result = finder.find(Criteria.Furthest).get
 
       result.P1 shouldBe sue
       result.P2 shouldBe sarah
@@ -84,9 +80,9 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return closest two for four people" in {
       val list = List(sue, sarah, mike, greg)
 
-      val finder = createFinder(list)
+      val finder = Finder(list)
 
-      val result = finder.Find(Criteria.Closest).get
+      val result = finder.find(Criteria.Closest).get
 
 
       result.P1 shouldBe sue
