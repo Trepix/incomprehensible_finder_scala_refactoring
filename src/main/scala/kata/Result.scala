@@ -1,6 +1,6 @@
 package kata
 
-class F {
+class Result {
 
   var P1: Person = _
 

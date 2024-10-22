@@ -8,12 +8,12 @@ import scala.collection.JavaConverters._
 
 class Finder(private val _p: util.List[Person]) {
 
-  def Find(ft: FT): F = {
-    val tr = new ArrayList[F]()
+  def Find(ft: FT): Result = {
+    val tr = new ArrayList[Result]()
 
     for (i <- 0 until _p.size - 1) {
         for (j <- i + 1 until _p.size) {
-            val r: F = new F()
+            val r: Result = new Result()
 
             if (_p.get(i).birthDate.getTime < _p.get(j).birthDate.getTime) {
                 r.P1 = _p.get(i)
@@ -29,10 +29,10 @@ class Finder(private val _p: util.List[Person]) {
     }
 
     if (tr.size < 1) {
-      return new F()
+      return new Result()
     }
 
-    var answer: F = tr.get(0)
+    var answer: Result = tr.get(0)
 
     for (result <- tr.asScala) ft match {
       case FT.One => if (result.D < answer.D) {
