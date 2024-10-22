@@ -14,7 +14,7 @@ class Finder(private val _p: util.List[Person]) {
 
     var P2: Person = _
 
-    var D: Long = _
+    def timeBetweenBirthday = P2.birthDate.getTime - P1.birthDate.getTime
   }
 
   def Find(ft: Criteria): Option[Result] = {
@@ -31,8 +31,6 @@ class Finder(private val _p: util.List[Person]) {
                 r.P1 = _p.get(j)
                 r.P2 = _p.get(i)
             }
-
-            r.D = r.P2.birthDate.getTime - r.P1.birthDate.getTime
             tr.add(r)
         }
     }
@@ -42,8 +40,8 @@ class Finder(private val _p: util.List[Person]) {
     }
 
     val answer = tr.asScala.reduce((r1, r2) =>  ft match {
-      case Criteria.Closest => if (r1.D < r2.D) r1 else r2
-      case Criteria.Furthest => if (r1.D > r2.D) r1 else r2
+      case Criteria.Closest => if (r1.timeBetweenBirthday < r2.timeBetweenBirthday) r1 else r2
+      case Criteria.Furthest => if (r1.timeBetweenBirthday > r2.timeBetweenBirthday) r1 else r2
     })
 
     Some(Result(answer.P1, answer.P2))
