@@ -41,8 +41,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return empty results when given one person" in {
-      val list = new util.ArrayList[Person]()
-      list.add(sue)
+      val list = List(sue)
 
       val finder = createFinder(list)
 
@@ -52,9 +51,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return closest two for two people" in {
-      val list = new util.ArrayList[Person]()
-      list.add(sue)
-      list.add(greg)
+      val list = List(sue, greg)
 
       val finder = createFinder(list)
 
@@ -65,9 +62,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return furthest two for two people" in {
-      val list = new util.ArrayList[Person]()
-      list.add(mike)
-      list.add(greg)
+      val list = List(mike ,greg)
 
       val finder = createFinder(list)
 
@@ -78,11 +73,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return furthest two for four people" in {
-      val list = new util.ArrayList[Person]()
-      list.add(sue)
-      list.add(sarah)
-      list.add(mike)
-      list.add(greg)
+      val list = List(sue, sarah, mike ,greg)
 
       val finder = createFinder(list)
 
@@ -93,11 +84,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return closest two for four people" in {
-      val list = new util.ArrayList[Person]()
-      list.add(sue)
-      list.add(sarah)
-      list.add(mike)
-      list.add(greg)
+      val list = List(sue, sarah, mike, greg)
 
       val finder = createFinder(list)
 
