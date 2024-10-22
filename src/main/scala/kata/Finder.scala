@@ -6,7 +6,7 @@ import java.util
 import java.util.ArrayList
 import scala.collection.JavaConverters._
 
-class Finder(private val _p: util.List[Thing]) {
+class Finder(private val _p: util.List[Person]) {
 
   def Find(ft: FT): F = {
     val tr = new ArrayList[F]()

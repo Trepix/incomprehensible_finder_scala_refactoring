@@ -5,29 +5,34 @@ import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.wordspec.AnyWordSpec
 
 import java.util
-import java.util.Date
+import java.util.Calendar.*
+import java.util.{Calendar, GregorianCalendar}
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
-  var sue: Thing = new Thing()
-  var greg: Thing = new Thing()
-  var sarah: Thing = new Thing()
-  var mike: Thing = new Thing()
+  var sue: Person = new Person()
+  var greg: Person = new Person()
+  var sarah: Person = new Person()
+  var mike: Person = new Person()
 
   override def beforeEach(): Unit = {
     sue.name = "Sue"
-    sue.birthDate = new Date(50, 0, 1)
+    sue.birthDate = date(50, JANUARY, 1);
     greg.name = "Greg"
-    greg.birthDate = new Date(52, 5, 1)
+    greg.birthDate = date(52, JUNE, 1)
     sarah.name = "Sarah"
-    sarah.birthDate = new Date(82, 0, 1)
+    sarah.birthDate = date(82, JANUARY, 1)
     mike.name = "Mike"
-    mike.birthDate = new Date(79, 0, 1)
+    mike.birthDate = date(79, JANUARY, 1)
+  }
+
+  private def date(year: Int, month: Int, day: Int) = {
+    new GregorianCalendar(year, month, day).getTime
   }
 
   "Finder" should {
     "Return empty results when given empty list" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
 
       val finder = new Finder(list)
 
@@ -38,7 +43,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return empty results when given one person" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
       list.add(sue)
 
       val finder = new Finder(list)
@@ -50,7 +55,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return closest two for two people" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
       list.add(sue)
       list.add(greg)
 
@@ -63,7 +68,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return furthest two for two people" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
       list.add(mike)
       list.add(greg)
 
@@ -76,7 +81,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return furthest two for four people" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
       list.add(sue)
       list.add(sarah)
       list.add(mike)
@@ -91,7 +96,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "Return closest two for four people" in {
-      val list = new util.ArrayList[Thing]()
+      val list = new util.ArrayList[Person]()
       list.add(sue)
       list.add(sarah)
       list.add(mike)

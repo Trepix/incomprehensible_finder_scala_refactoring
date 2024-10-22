@@ -2,7 +2,7 @@ package kata
 
 import java.util.Date
 
-class Thing {
+class Person {
 
   var name: String = _
 
