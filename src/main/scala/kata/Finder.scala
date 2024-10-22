@@ -24,7 +24,7 @@ class Finder(private val _p: util.List[Person]) {
         for (j <- i + 1 until _p.size) {
             val r: InternalResult = new InternalResult()
 
-            if (_p.get(i).birthDate.getTime < _p.get(j).birthDate.getTime) {
+            if (_p.get(i).isYoungerThan(_p.get(j))) {
                 r.P1 = _p.get(i)
                 r.P2 = _p.get(j)
             } else {
