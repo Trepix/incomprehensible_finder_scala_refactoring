@@ -1,10 +1,3 @@
 package kata
 
-class Result {
-
-  var P1: Person = _
-
-  var P2: Person = _
-
-  var D: Long = _
-}
+case class Result(P1: Person, P2: Person)

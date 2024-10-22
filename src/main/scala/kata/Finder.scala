@@ -8,12 +8,21 @@ import scala.collection.JavaConverters._
 
 class Finder(private val _p: util.List[Person]) {
 
+  class InternalResult {
+
+    var P1: Person = _
+
+    var P2: Person = _
+
+    var D: Long = _
+  }
+
   def Find(ft: FT): Option[Result] = {
-    val tr = new ArrayList[Result]()
+    val tr = new ArrayList[InternalResult]()
 
     for (i <- 0 until _p.size - 1) {
         for (j <- i + 1 until _p.size) {
-            val r: Result = new Result()
+            val r: InternalResult = new InternalResult()
 
             if (_p.get(i).birthDate.getTime < _p.get(j).birthDate.getTime) {
                 r.P1 = _p.get(i)
@@ -32,7 +41,7 @@ class Finder(private val _p: util.List[Person]) {
       return None
     }
 
-    var answer: Result = tr.get(0)
+    var answer: InternalResult = tr.get(0)
 
     for (result <- tr.asScala) ft match {
       case FT.One => if (result.D < answer.D) {
@@ -43,6 +52,6 @@ class Finder(private val _p: util.List[Person]) {
       }
     }
 
-    Some(answer)
+    Some(Result(answer.P1, answer.P2))
   }
 }
