@@ -7,9 +7,10 @@ import org.scalatest.wordspec.AnyWordSpec
 import java.util
 import java.util.Calendar.*
 import java.util.{Calendar, GregorianCalendar}
+import scala.collection.JavaConverters._
 
 def createFinder(list: util.ArrayList[Person]) = {
-  new Finder(list)
+  Finder.Finder(list.asScala.toList)
 }
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
