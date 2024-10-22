@@ -7,9 +7,6 @@ import org.scalatest.wordspec.AnyWordSpec
 import java.util
 import java.util.Calendar.*
 import java.util.{Calendar, GregorianCalendar}
-import scala.collection.JavaConverters._
-
-
 
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {

@@ -3,8 +3,7 @@ package kata
 import java.util.Date
 
 case class Person(name: String, birthDate: Date) {
-  def isYoungerThan(other: Person) = this.birthDate.getTime <= other.birthDate.getTime
-  def timeBetweenBirthdays(other: Person) = Math.abs(this.birthDate.getTime - other.birthDate.getTime)
+  def timeBetweenBirthdays(other: Person): Long = Math.abs(this.birthDate.getTime - other.birthDate.getTime)
 }
 
 object Person {
