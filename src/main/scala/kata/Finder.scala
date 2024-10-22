@@ -41,16 +41,10 @@ class Finder(private val _p: util.List[Person]) {
       return None
     }
 
-    var answer: InternalResult = tr.get(0)
-
-    for (result <- tr.asScala) ft match {
-      case Criteria.Closest => if (result.D < answer.D) {
-        answer = result
-      }
-      case Criteria.Furthest => if (result.D > answer.D) {
-        answer = result
-      }
-    }
+    val answer = tr.asScala.reduce((r1, r2) =>  ft match {
+      case Criteria.Closest => if (r1.D < r2.D) r1 else r2
+      case Criteria.Furthest => if (r1.D > r2.D) r1 else r2
+    })
 
     Some(Result(answer.P1, answer.P2))
   }
