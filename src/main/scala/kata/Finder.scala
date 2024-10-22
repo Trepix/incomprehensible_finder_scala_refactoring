@@ -27,3 +27,7 @@ class Finder(private val _p: util.List[Person]) {
     Some(answer)
   }
 }
+
+object Finder {
+  def Finder(list: List[Person]) = new Finder(new util.ArrayList(list.asJava))
+}

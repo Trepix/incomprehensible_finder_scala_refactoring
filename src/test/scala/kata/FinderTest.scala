@@ -8,6 +8,10 @@ import java.util
 import java.util.Calendar.*
 import java.util.{Calendar, GregorianCalendar}
 
+def createFinder(list: util.ArrayList[Person]) = {
+  new Finder(list)
+}
+
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
   val sue: Person = Person("Sue", date(50, JANUARY, 1))
@@ -23,7 +27,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
     "Return empty results when given empty list" in {
       val list = new util.ArrayList[Person]()
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Closest)
 
@@ -34,7 +38,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
       val list = new util.ArrayList[Person]()
       list.add(sue)
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Closest)
 
@@ -46,7 +50,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
       list.add(sue)
       list.add(greg)
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Closest).get
 
@@ -59,7 +63,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
       list.add(mike)
       list.add(greg)
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Furthest).get
 
@@ -74,7 +78,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
       list.add(mike)
       list.add(greg)
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Furthest).get
 
@@ -89,7 +93,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
       list.add(mike)
       list.add(greg)
 
-      val finder = new Finder(list)
+      val finder = createFinder(list)
 
       val result = finder.Find(Criteria.Closest).get
 
