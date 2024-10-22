@@ -1,7 +1,6 @@
 package kata
 
 object Criteria {
-  type CriteriaType = Criteria
 
   sealed trait Criteria
 
