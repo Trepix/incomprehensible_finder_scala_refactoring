@@ -13,6 +13,11 @@ def createFinder(list: util.ArrayList[Person]) = {
   Finder.Finder(list.asScala.toList)
 }
 
+def createFinder(list: List[Person]) = {
+  Finder.Finder(list)
+}
+
+
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
   val sue: Person = Person("Sue", date(50, JANUARY, 1))
@@ -26,7 +31,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
   "Finder" should {
     "Return empty results when given empty list" in {
-      val list = new util.ArrayList[Person]()
+      val list = List.empty[Person]
 
       val finder = createFinder(list)
 
