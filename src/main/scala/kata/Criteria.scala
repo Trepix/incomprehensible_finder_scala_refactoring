@@ -1,14 +1,11 @@
 package kata
 
 object Criteria {
-  type Criteria = Criteria2
+  type CriteriaType = Criteria
 
-  val Closest = Closest2
-  val Furthest = Furthest2
+  sealed trait Criteria
 
-  sealed trait Criteria2
+  case object Closest extends Criteria
 
-  case object Closest2 extends Criteria2
-
-  case object Furthest2 extends Criteria2
+  case object Furthest extends Criteria
 }

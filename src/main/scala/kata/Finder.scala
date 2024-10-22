@@ -1,6 +1,6 @@
 package kata
 
-import kata.Criteria.Criteria
+import kata.Criteria.CriteriaType
 
 import java.util
 import java.util.ArrayList
@@ -17,7 +17,7 @@ class Finder(private val _p: util.List[Person]) {
     var D: Long = _
   }
 
-  def Find(ft: Criteria): Option[Result] = {
+  def Find(ft: CriteriaType): Option[Result] = {
     val tr = new ArrayList[InternalResult]()
 
     for (i <- 0 until _p.size - 1) {
