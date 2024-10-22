@@ -2,11 +2,7 @@ package kata
 
 import java.util.Date
 
-class Person {
-
-  var name: String = _
-
-  var birthDate: Date = _
+case class Person(name: String, birthDate: Date) {
 
   def getName(): String = name
 
@@ -16,9 +12,7 @@ class Person {
 
 object Person {
   def create(name: String, birthDate: Date) = {
-    val p = Person()
-    p.name = name
-    p.birthDate = birthDate
+    val p = Person(name, birthDate)
     p
   }
 }
