@@ -1,21 +1,9 @@
 package kata
 
-import kata.Criteria
-
 import java.util
-import java.util.ArrayList
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 
 class Finder(private val _p: util.List[Person]) {
-
-  class InternalResult {
-
-    var P1: Person = _
-
-    var P2: Person = _
-
-    def timeBetweenBirthday = P2.birthDate.getTime - P1.birthDate.getTime
-  }
 
   def Find(ft: Criteria): Option[Result] = {
 
@@ -30,19 +18,12 @@ class Finder(private val _p: util.List[Person]) {
         val x = list.zip(list.tail).map { case (p1, p2) => (p1, p2, p1.timeBetweenBirthdays(p2)) }.minBy {
           case (_, _, timeBetweenBirthdays) => timeBetweenBirthdays
         }
-        val ir = InternalResult()
-        ir.P1 = x._1
-        ir.P2 = x._2
-        ir
+        Result(x._1, x._2)
       }
       case Criteria.Furthest => {
-        val ir = InternalResult()
-        ir.P1 = list.head
-        ir.P2 = list.last
-        ir
+        Result(list.head, list.last)
       }
     }
-
-    Some(Result(answer.P1, answer.P2))
+    Some(answer)
   }
 }
