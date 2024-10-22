@@ -8,7 +8,7 @@ import scala.collection.JavaConverters._
 
 class Finder(private val _p: util.List[Person]) {
 
-  def Find(ft: FT): Result = {
+  def Find(ft: FT): Option[Result] = {
     val tr = new ArrayList[Result]()
 
     for (i <- 0 until _p.size - 1) {
@@ -29,7 +29,7 @@ class Finder(private val _p: util.List[Person]) {
     }
 
     if (tr.size < 1) {
-      return new Result()
+      return None
     }
 
     var answer: Result = tr.get(0)
@@ -43,6 +43,6 @@ class Finder(private val _p: util.List[Person]) {
       }
     }
 
-    answer
+    Some(answer)
   }
 }
