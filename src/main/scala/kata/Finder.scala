@@ -1,9 +1,8 @@
 package kata
 
-import java.util
 import scala.collection.JavaConverters.*
 
-class Finder(private val _p: util.List[Person]) {
+class Finder(private val _p: List[Person]) {
 
   def Find(ft: Criteria): Option[Result] = {
 
@@ -12,7 +11,7 @@ class Finder(private val _p: util.List[Person]) {
     }
 
     implicit val personOrdering: Ordering[Person] = Person.orderingByBirthDate
-    val list = _p.asScala.toList.sorted
+    val list = _p.toList.sorted
     val answer = ft match {
       case Criteria.Closest => {
         val x = list.zip(list.tail).map { case (p1, p2) => (p1, p2, p1.timeBetweenBirthdays(p2)) }.minBy {
@@ -26,8 +25,4 @@ class Finder(private val _p: util.List[Person]) {
     }
     Some(answer)
   }
-}
-
-object Finder {
-  def Finder(list: List[Person]) = new Finder(new util.ArrayList(list.asJava))
 }

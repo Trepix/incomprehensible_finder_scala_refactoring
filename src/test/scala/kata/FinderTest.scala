@@ -9,16 +9,14 @@ import java.util.Calendar.*
 import java.util.{Calendar, GregorianCalendar}
 import scala.collection.JavaConverters._
 
-def createFinder(list: util.ArrayList[Person]) = {
-  Finder.Finder(list.asScala.toList)
-}
 
-def createFinder(list: List[Person]) = {
-  Finder.Finder(list)
-}
 
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
+
+  def createFinder(list: List[Person]) = {
+    Finder(list)
+  }
 
   val sue: Person = Person("Sue", date(50, JANUARY, 1))
   val greg: Person = Person("Greg", date(52, JUNE, 1))
