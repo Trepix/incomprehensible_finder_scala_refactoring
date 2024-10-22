@@ -41,7 +41,14 @@ class Finder(private val _p: util.List[Person]) {
 
     val answer = tr.asScala.reduce((r1, r2) =>  ft match {
       case Criteria.Closest => if (r1.timeBetweenBirthday < r2.timeBetweenBirthday) r1 else r2
-      case Criteria.Furthest => if (r1.timeBetweenBirthday > r2.timeBetweenBirthday) r1 else r2
+      case Criteria.Furthest => {
+        implicit val personOrdering: Ordering[Person] = Person.orderingByBirthDate
+        val list = _p.asScala.toList.sorted
+        val ir = InternalResult()
+        ir.P1 = list.head
+        ir.P2 = list.last
+        ir
+      }
     })
 
     Some(Result(answer.P1, answer.P2))
