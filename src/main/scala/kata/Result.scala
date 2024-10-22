@@ -1,3 +1,3 @@
 package kata
 
-case class Result(P1: Person, P2: Person)
+case class Result(younger: Person, older: Person)
