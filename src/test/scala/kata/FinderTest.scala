@@ -10,10 +10,10 @@ import java.util.{Calendar, GregorianCalendar}
 
 class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
-  val sue: Person = Person.apply("Sue", date(50, JANUARY, 1))
-  val greg: Person = Person.apply("Greg", date(52, JUNE, 1))
-  val sarah: Person =Person.apply("Sarah", date(82, JANUARY, 1))
-  val mike: Person = Person.apply("Mike", date(79, JANUARY, 1))
+  val sue: Person = Person("Sue", date(50, JANUARY, 1))
+  val greg: Person = Person("Greg", date(52, JUNE, 1))
+  val sarah: Person =Person("Sarah", date(82, JANUARY, 1))
+  val mike: Person = Person("Mike", date(79, JANUARY, 1))
 
   private def date(year: Int, month: Int, day: Int) = {
     new GregorianCalendar(year, month, day).getTime
