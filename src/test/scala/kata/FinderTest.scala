@@ -25,7 +25,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.One)
+      val result = finder.Find(Criteria.Closest)
 
       result shouldBe None
     }
@@ -36,7 +36,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.One)
+      val result = finder.Find(Criteria.Closest)
 
       result shouldBe None
     }
@@ -48,7 +48,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.One).get
+      val result = finder.Find(Criteria.Closest).get
 
       result.P1 shouldBe sue
       result.P2 shouldBe greg
@@ -61,7 +61,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.Two).get
+      val result = finder.Find(Criteria.Furthest).get
 
       result.P1 shouldBe greg
       result.P2 shouldBe mike
@@ -76,7 +76,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.Two).get
+      val result = finder.Find(Criteria.Furthest).get
 
       result.P1 shouldBe sue
       result.P2 shouldBe sarah
@@ -91,7 +91,7 @@ class FinderTest extends AnyWordSpec with BeforeAndAfterEach {
 
       val finder = new Finder(list)
 
-      val result = finder.Find(FT.One).get
+      val result = finder.Find(Criteria.Closest).get
 
 
       result.P1 shouldBe sue

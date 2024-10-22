@@ -1,6 +1,6 @@
 package kata
 
-import kata.FT.FT
+import kata.Criteria.FT
 
 import java.util
 import java.util.ArrayList
@@ -44,10 +44,10 @@ class Finder(private val _p: util.List[Person]) {
     var answer: InternalResult = tr.get(0)
 
     for (result <- tr.asScala) ft match {
-      case FT.One => if (result.D < answer.D) {
+      case Criteria.Closest => if (result.D < answer.D) {
         answer = result
       }
-      case FT.Two => if (result.D > answer.D) {
+      case Criteria.Furthest => if (result.D > answer.D) {
         answer = result
       }
     }
