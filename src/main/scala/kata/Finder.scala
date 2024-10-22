@@ -18,26 +18,6 @@ class Finder(private val _p: util.List[Person]) {
   }
 
   def Find(ft: Criteria): Option[Result] = {
-    val tr = new ArrayList[InternalResult]()
-
-    for (i <- 0 until _p.size - 1) {
-        for (j <- i + 1 until _p.size) {
-            val r: InternalResult = new InternalResult()
-
-            if (_p.get(i).isYoungerThan(_p.get(j))) {
-                r.P1 = _p.get(i)
-                r.P2 = _p.get(j)
-            } else {
-                r.P1 = _p.get(j)
-                r.P2 = _p.get(i)
-            }
-            tr.add(r)
-        }
-    }
-
-    if (tr.size < 1) {
-      return None
-    }
 
     if (_p.size <= 1) {
       return None
